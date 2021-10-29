@@ -62,8 +62,13 @@ class _ListRouteState extends State<ListRoute> {
 class DetailsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("DETAILS PAGE"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Details'),
+      ),
+      body: Center(
+        child: Text("DETAILS PAGE"),
+      ),
     );
   }
 }
