@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'details_route.dart';
+
 class ListRoute extends StatefulWidget {
   ListRoute({Key key}) : super(key: key);
 
@@ -56,19 +58,5 @@ class _ListRouteState extends State<ListRoute> {
           padding: EdgeInsets.all(12.0),
           child: Text("Row ${widgets[i]["title"]}"),
         ));
-  }
-}
-
-class DetailsRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Details'),
-      ),
-      body: Center(
-        child: Text("DETAILS PAGE"),
-      ),
-    );
   }
 }
