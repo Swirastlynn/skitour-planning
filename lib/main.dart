@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:skitour_planning/simple_architecture_app_page.dart';
+import 'package:skitour_planning/list_route.dart';
 
 void main() {
   runApp(TatraSkitourApp());
@@ -13,7 +13,7 @@ class TatraSkitourApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SimpleArchitectureAppPage(),
+      home: ListRoute(),
     );
   }
 }
