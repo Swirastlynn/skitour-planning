@@ -3,16 +3,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'details_route.dart';
+import 'details_screen.dart';
 
-class ListRoute extends StatefulWidget {
-  ListRoute({Key key}) : super(key: key);
+class PeopleListScreen extends StatefulWidget {
+  PeopleListScreen({Key key}) : super(key: key);
 
   @override
-  _ListRouteState createState() => _ListRouteState();
+  _PeopleListScreenState createState() => _PeopleListScreenState();
 }
 
-class _ListRouteState extends State<ListRoute> {
+class _PeopleListScreenState extends State<PeopleListScreen> {
   List widgets = [];
 
   @override
@@ -32,8 +32,9 @@ class _ListRouteState extends State<ListRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Planowanie'),
+        title: Text('People List'),
       ),
       body: ListView.builder(
         itemCount: widgets.length,
@@ -45,13 +46,13 @@ class _ListRouteState extends State<ListRoute> {
     );
   }
 
-  // todo extract to SingleListWidget widget. How?
+  // todo extract to SingleListWidget widget. Use explicit type for json parsed object
   Widget getRow(int i) {
     return MaterialButton(
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => DetailsRoute()),
+            MaterialPageRoute(builder: (context) => DetailsScreen()),
           );
         },
         child: Padding(

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class StateProvidersExampleRoute extends StatelessWidget {
+class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('State Example'),
+        title: Text('Details'),
       ),
       body: Center(
-        child: Text("State Management PAGE"),
+        child: Text("DETAILS PAGE"),
       ),
     );
   }
