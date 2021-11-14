@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
+import '../blocs/movie_detail_bloc_provider.dart';
 import '../blocs/movies_bloc.dart';
 import '../models/item_model.dart';
 import 'movie_detail.dart';
 
 class MovieList extends StatefulWidget {
   @override
-  _MovieListState createState() => _MovieListState();
+  State<StatefulWidget> createState() {
+    return MovieListState();
+  }
 }
 
-class _MovieListState extends State<MovieList> {
+class MovieListState extends State<MovieList> {
   @override
   void initState() {
     super.initState();
@@ -65,16 +68,20 @@ class _MovieListState extends State<MovieList> {
   openDetailPage(ItemModel data, int index) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) {
-        return MovieDetail(
-          title: data.results[index].title,
-          posterUrl: data.results[index].backdrop_path,
-          description: data.results[index].overview,
-          releaseDate: data.results[index].release_date,
-          voteAverage: data.results[index].vote_average.toString(),
-          movieId: data.results[index].id,
-        );
-      }),
+      MaterialPageRoute(
+        builder: (context) {
+          return MovieDetailBlocProvider(
+            child: MovieDetail(
+              title: data.results[index].title,
+              posterUrl: data.results[index].backdrop_path,
+              description: data.results[index].overview,
+              releaseDate: data.results[index].release_date,
+              voteAverage: data.results[index].vote_average.toString(),
+              movieId: data.results[index].id,
+            ),
+          );
+        },
+      ),
     );
   }
 }
