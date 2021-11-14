@@ -19,4 +19,4 @@ class MoviesBloc {
   }
 }
 
-final bloc = MoviesBloc();
+final bloc = MoviesBloc(); // global access - not recommended
