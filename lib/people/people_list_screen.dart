@@ -26,13 +26,11 @@ class _PeopleListScreenState extends State<PeopleListScreen> {
       var jsonResponse = await apiManager
           .getAPICall(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
       setState(() {
-        posts = jsonResponse
-            .map<Post>((site) => Post.fromJson(site))
-            .toList() as List<Post>;
+        posts = jsonResponse.map<Post>((site) => Post.fromJson(site)).toList()
+            as List<Post>;
       });
     } on Exception catch (error) {
-      print(
-          'Exception $error'); // there should be appropriate handling
+      print('Exception $error'); // there should be appropriate handling
     }
   }
 
@@ -55,15 +53,16 @@ class _PeopleListScreenState extends State<PeopleListScreen> {
   // todo extract to SingleListWidget widget. Use explicit type for json parsed object
   Widget getRow(int i) {
     return MaterialButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DetailsScreen()),
-          );
-        },
-        child: Padding(
-          padding: EdgeInsets.all(12.0),
-          child: Text("Row ${posts[i].title}"),
-        ));
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => DetailsScreen()),
+        );
+      },
+      child: Padding(
+        padding: EdgeInsets.all(12.0),
+        child: Text("Row ${posts[i].title}"),
+      ),
+    );
   }
 }
