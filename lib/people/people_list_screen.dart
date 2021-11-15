@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:skitour_planning/people/post.dart';
 
 import 'details_screen.dart';
 
@@ -13,7 +14,7 @@ class PeopleListScreen extends StatefulWidget {
 }
 
 class _PeopleListScreenState extends State<PeopleListScreen> {
-  List widgets = [];
+  List<Post> posts = [];
 
   @override
   void initState() {
@@ -22,10 +23,14 @@ class _PeopleListScreenState extends State<PeopleListScreen> {
   }
 
   Future<void> loadData() async {
-    var dataURL = Uri.parse('https://jsonplaceholder.typicode.com/posts');
+    var dataURL = Uri.parse(
+        'https://jsonplaceholder.typicode.com/posts'); // todo handle exceptions
     http.Response response = await http.get(dataURL);
     setState(() {
-      widgets = jsonDecode(response.body);
+      var decodedJson = jsonDecode(utf8.decode(response.bodyBytes));
+      posts = decodedJson
+          .map<Post>((site) => Post.fromJson(site as Map<String, dynamic>))
+          .toList() as List<Post>;
     });
   }
 
@@ -37,10 +42,9 @@ class _PeopleListScreenState extends State<PeopleListScreen> {
         title: Text('People List'),
       ),
       body: ListView.builder(
-        itemCount: widgets.length,
-        itemBuilder: (BuildContext context, int position) {
+        itemCount: posts.length,
+        itemBuilder: (_, int position) {
           return getRow(position);
-          // todo how to do getRow(widgets[position]) to extract data from UI? How to know what's the type of widgets[position]?
         },
       ),
     );
@@ -57,7 +61,7 @@ class _PeopleListScreenState extends State<PeopleListScreen> {
         },
         child: Padding(
           padding: EdgeInsets.all(12.0),
-          child: Text("Row ${widgets[i]["title"]}"),
+          child: Text("Row ${posts[i].title}"),
         ));
   }
 }
