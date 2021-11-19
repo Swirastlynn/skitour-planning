@@ -1,8 +1,8 @@
 class ItemModel {
-  int _page;
-  int _total_results;
-  int _total_pages;
-  List<_Result> _results = [];
+  late int _page;
+  late int _total_results;
+  late int _total_pages;
+  late List<_Result> _results = [];
 
   ItemModel.fromJson(Map<String, dynamic> parsedJson) {
     // todo parsing should be done automatically
@@ -28,20 +28,20 @@ class ItemModel {
 }
 
 class _Result {
-  int _vote_count;
-  int _id;
-  bool _video;
-  var _vote_average;
-  String _title;
-  double _popularity;
-  String _poster_path;
-  String _original_language;
-  String _original_title;
-  List<int> _genre_ids = [];
-  String _backdrop_path;
-  bool _adult;
-  String _overview;
-  String _release_date;
+  late int _vote_count;
+  late int _id;
+  late bool _video;
+  late var _vote_average;
+  late String _title;
+  late double _popularity;
+  late String _poster_path;
+  late String _original_language;
+  late String _original_title;
+  late List<int> _genre_ids = [];
+  late String _backdrop_path;
+  late bool _adult;
+  late String _overview;
+  late String _release_date;
 
   _Result(result) {
     _vote_count = result['vote_count'];

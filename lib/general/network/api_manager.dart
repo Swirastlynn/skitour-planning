@@ -22,7 +22,7 @@ class ApiManager {
     return jsonResponse;
   }
 
-  dynamic _validateResponse(http.Response response) async {
+  dynamic _validateResponse(http.Response response) {
     var statusCode = response.statusCode;
     if (statusCode >= 200 && statusCode < 300) {
       final decodedJson = utf8.decode(response.bodyBytes);
