@@ -1,6 +1,6 @@
 class TrailerModel {
-  int _id;
-  List<_Result> _results = [];
+  late int _id;
+  late List<_Result> _results = [];
 
   TrailerModel.fromJson(Map<String, dynamic> parsedJson) {
     _id = parsedJson['id'];
@@ -18,14 +18,14 @@ class TrailerModel {
 }
 
 class _Result {
-  String _id;
-  String _iso_639_1;
-  String _iso_3166_1;
-  String _key;
-  String _name;
-  String _site;
-  int _size;
-  String _type;
+  late String _id;
+  late String _iso_639_1;
+  late String _iso_3166_1;
+  late String _key;
+  late String _name;
+  late String _site;
+  late int _size;
+  late String _type;
 
   _Result(result) {
     _id = result['id'];

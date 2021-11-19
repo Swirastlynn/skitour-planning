@@ -46,23 +46,27 @@ class MovieListState extends State<MovieList> {
   }
 
   Widget buildList(AsyncSnapshot<ItemModel> snapshot) {
-    return GridView.builder(
-      itemCount: snapshot.data.results.length,
-      gridDelegate:
-          new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-      itemBuilder: (BuildContext context, int index) {
-        return GridTile(
-          child: InkResponse(
-            enableFeedback: true,
-            child: Image.network(
-              'https://image.tmdb.org/t/p/w185${snapshot.data.results[index].poster_path}',
-              fit: BoxFit.cover,
+    if (snapshot.hasData) {
+      return GridView.builder(
+        itemCount: snapshot.data!.results.length,
+        gridDelegate:
+            new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemBuilder: (BuildContext context, int index) {
+          return GridTile(
+            child: InkResponse(
+              enableFeedback: true,
+              child: Image.network(
+                'https://image.tmdb.org/t/p/w185${snapshot.data!.results[index].poster_path}',
+                fit: BoxFit.cover,
+              ),
+              onTap: () => openDetailPage(snapshot.data!, index),
             ),
-            onTap: () => openDetailPage(snapshot.data, index),
-          ),
-        );
-      },
-    );
+          );
+        },
+      );
+    } else {
+      return Text("No data");
+    }
   }
 
   openDetailPage(ItemModel data, int index) {

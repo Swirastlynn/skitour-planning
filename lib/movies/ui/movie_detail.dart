@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+
 import '../blocs/movie_detail_bloc_provider.dart';
 import '../models/trailer_model.dart';
 
@@ -13,12 +14,12 @@ class MovieDetail extends StatefulWidget {
   final int movieId;
 
   MovieDetail({
-    this.title,
-    this.posterUrl,
-    this.description,
-    this.releaseDate,
-    this.voteAverage,
-    this.movieId,
+    required this.title,
+    required this.posterUrl,
+    required this.description,
+    required this.releaseDate,
+    required this.voteAverage,
+    required this.movieId,
   });
 
   @override
@@ -42,15 +43,15 @@ class MovieDetailState extends State<MovieDetail> {
   final String voteAverage;
   final int movieId;
 
-  MovieDetailBloc bloc;
+  late MovieDetailBloc bloc;
 
   MovieDetailState({
-    this.title,
-    this.posterUrl,
-    this.description,
-    this.releaseDate,
-    this.voteAverage,
-    this.movieId,
+    required this.title,
+    required this.posterUrl,
+    required this.description,
+    required this.releaseDate,
+    required this.voteAverage,
+    required this.movieId,
   });
 
   @override
@@ -73,8 +74,7 @@ class MovieDetailState extends State<MovieDetail> {
         top: false,
         bottom: false,
         child: NestedScrollView(
-          headerSliverBuilder: (BuildContext context,
-              bool innerBoxIsScrolled) {
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
                 expandedHeight: 200.0,
@@ -83,9 +83,9 @@ class MovieDetailState extends State<MovieDetail> {
                 elevation: 0.0,
                 flexibleSpace: FlexibleSpaceBar(
                     background: Image.network(
-                      "https://image.tmdb.org/t/p/w500$posterUrl",
-                      fit: BoxFit.cover,
-                    )),
+                  "https://image.tmdb.org/t/p/w500$posterUrl",
+                  fit: BoxFit.cover,
+                )),
               ),
             ];
           },
@@ -102,8 +102,7 @@ class MovieDetailState extends State<MovieDetail> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Container(margin: EdgeInsets.only(top: 8.0,
-                    bottom: 8.0)),
+                Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
                 Row(
                   children: <Widget>[
                     Icon(
@@ -111,8 +110,7 @@ class MovieDetailState extends State<MovieDetail> {
                       color: Colors.red,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 1.0,
-                          right: 1.0),
+                      margin: EdgeInsets.only(left: 1.0, right: 1.0),
                     ),
                     Text(
                       voteAverage,
@@ -121,8 +119,7 @@ class MovieDetailState extends State<MovieDetail> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 10.0,
-                          right: 10.0),
+                      margin: EdgeInsets.only(left: 10.0, right: 10.0),
                     ),
                     Text(
                       releaseDate,
@@ -132,11 +129,9 @@ class MovieDetailState extends State<MovieDetail> {
                     ),
                   ],
                 ),
-                Container(margin: EdgeInsets.only(top: 8.0,
-                    bottom: 8.0)),
+                Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
                 Text(description),
-                Container(margin: EdgeInsets.only(top: 8.0,
-                    bottom: 8.0)),
+                Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
                 Text(
                   "Trailer",
                   style: TextStyle(
@@ -144,8 +139,7 @@ class MovieDetailState extends State<MovieDetail> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Container(margin: EdgeInsets.only(top: 8.0,
-                    bottom: 8.0)),
+                Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
                 StreamBuilder(
                   stream: bloc.movieTrailers,
                   builder:
@@ -156,10 +150,10 @@ class MovieDetailState extends State<MovieDetail> {
                         builder: (context,
                             AsyncSnapshot<TrailerModel> itemSnapShot) {
                           if (itemSnapShot.hasData) {
-                            if (itemSnapShot.data.results.length > 0)
-                              return trailerLayout(itemSnapShot.data);
+                            if (itemSnapShot.hasData)
+                              return trailerLayout(itemSnapShot.data!);
                             else
-                              return noTrailer(itemSnapShot.data);
+                              return noTrailer();
                           } else {
                             return Center(child: CircularProgressIndicator());
                           }
@@ -178,7 +172,7 @@ class MovieDetailState extends State<MovieDetail> {
     );
   }
 
-  Widget noTrailer(TrailerModel data) {
+  Widget noTrailer() {
     return Center(
       child: Container(
         child: Text("No trailer available"),

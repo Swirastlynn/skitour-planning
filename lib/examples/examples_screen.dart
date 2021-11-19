@@ -46,9 +46,9 @@ class ExampleRow extends StatelessWidget {
   final MaterialPageRoute route;
 
   const ExampleRow({
-    Key key,
-    this.text,
-    this.route,
+    Key? key,
+    required this.text,
+    required this.route,
   }) : super(key: key);
 
   @override
