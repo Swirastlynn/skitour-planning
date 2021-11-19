@@ -23,7 +23,6 @@ class _MyChartState extends State<MyChart> {
       return PieChart(
         dataMap: _createData(schedule.stateManagementValue),
         chartRadius: MediaQuery.of(context).size.width / 1.5,
-        showLegends: false,
         colorList: colorList,
       );
     });
