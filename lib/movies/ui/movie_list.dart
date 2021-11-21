@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../blocs/movie_detail_bloc_provider.dart';
 import '../blocs/movies_bloc.dart';
 import '../models/item_model.dart';
 import 'movie_detail.dart';
@@ -49,8 +48,7 @@ class MovieListState extends State<MovieList> {
     if (snapshot.hasData) {
       return GridView.builder(
         itemCount: snapshot.data!.results.length,
-        gridDelegate:
-            new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (BuildContext context, int index) {
           return GridTile(
             child: InkResponse(
@@ -70,21 +68,16 @@ class MovieListState extends State<MovieList> {
   }
 
   openDetailPage(ItemModel data, int index) {
-    Navigator.push(
+    Navigator.pushNamed(
       context,
-      MaterialPageRoute(
-        builder: (context) {
-          return MovieDetailBlocProvider(
-            child: MovieDetail(
-              title: data.results[index].title,
-              posterUrl: data.results[index].backdrop_path,
-              description: data.results[index].overview,
-              releaseDate: data.results[index].release_date,
-              voteAverage: data.results[index].vote_average.toString(),
-              movieId: data.results[index].id,
-            ),
-          );
-        },
+      "/movies/details",
+      arguments: MovieDetailArguments(
+        data.results[index].id,
+        data.results[index].title,
+        data.results[index].backdrop_path,
+        data.results[index].overview,
+        data.results[index].release_date,
+        data.results[index].vote_average.toString(),
       ),
     );
   }
