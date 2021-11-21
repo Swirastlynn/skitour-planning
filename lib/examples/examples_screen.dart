@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:skitour_planning/movies/ui/movie_list.dart';
-import 'package:skitour_planning/people/people_list_screen.dart';
-import 'package:skitour_planning/piechart/my_schedule.dart';
-import 'package:skitour_planning/piechart/piechart_home_screen.dart';
 
 class ExamplesScreen extends StatelessWidget {
   @override
@@ -16,24 +11,15 @@ class ExamplesScreen extends StatelessWidget {
         children: [
           ExampleRow(
             text: "People List",
-            route: MaterialPageRoute(
-              builder: (context) => PeopleListScreen(),
-            ),
+            path: "/people",
           ),
           ExampleRow(
             text: "Pie Chart",
-            route: MaterialPageRoute(
-              builder: (context) => ChangeNotifierProvider(
-                create: (context) => MySchedule(),
-                child: PiechartHomeScreen(),
-              ),
-            ),
+            path: "/piechart",
           ),
           ExampleRow(
             text: "Popular Movies",
-            route: MaterialPageRoute(
-              builder: (context) => MovieList(),
-            ),
+            path: "/movies",
           ),
         ],
       ),
@@ -43,12 +29,12 @@ class ExamplesScreen extends StatelessWidget {
 
 class ExampleRow extends StatelessWidget {
   final String text;
-  final MaterialPageRoute route;
+  final String path;
 
   const ExampleRow({
     Key? key,
     required this.text,
-    required this.route,
+    required this.path,
   }) : super(key: key);
 
   @override
@@ -58,9 +44,9 @@ class ExampleRow extends StatelessWidget {
         Expanded(
           child: MaterialButton(
             onPressed: () {
-              Navigator.push(
+              Navigator.pushNamed(
                 context,
-                route,
+                path,
               );
             },
             child: Padding(

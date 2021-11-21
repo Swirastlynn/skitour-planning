@@ -5,59 +5,37 @@ import 'package:flutter/material.dart';
 import '../blocs/movie_detail_bloc_provider.dart';
 import '../models/trailer_model.dart';
 
-class MovieDetail extends StatefulWidget {
+class MovieDetailArguments {
+  final int movieId;
+  final String title;
   final posterUrl;
   final description;
   final releaseDate;
-  final String title;
   final String voteAverage;
-  final int movieId;
 
-  MovieDetail({
-    required this.title,
-    required this.posterUrl,
-    required this.description,
-    required this.releaseDate,
-    required this.voteAverage,
-    required this.movieId,
-  });
+  MovieDetailArguments(this.movieId, this.title, this.posterUrl, this.description, this.releaseDate, this.voteAverage);
+}
+
+class MovieDetail extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return MovieDetailState(
-      title: title,
-      posterUrl: posterUrl,
-      description: description,
-      releaseDate: releaseDate,
-      voteAverage: voteAverage,
-      movieId: movieId,
-    );
+    return MovieDetailState();
   }
 }
 
 class MovieDetailState extends State<MovieDetail> {
-  final posterUrl;
-  final description;
-  final releaseDate;
-  final String title;
-  final String voteAverage;
-  final int movieId;
-
   late MovieDetailBloc bloc;
 
-  MovieDetailState({
-    required this.title,
-    required this.posterUrl,
-    required this.description,
-    required this.releaseDate,
-    required this.voteAverage,
-    required this.movieId,
-  });
+  late MovieDetailArguments args;
+
+  MovieDetailState();
 
   @override
   void didChangeDependencies() {
+    // todo ModalRoute here?
     bloc = MovieDetailBlocProvider.of(context);
-    bloc.fetchTrailersById(movieId);
+    bloc.fetchTrailersById(args.movieId);
     super.didChangeDependencies();
   }
 
@@ -69,6 +47,7 @@ class MovieDetailState extends State<MovieDetail> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as MovieDetailArguments;
     return Scaffold(
       body: SafeArea(
         top: false,
@@ -83,7 +62,7 @@ class MovieDetailState extends State<MovieDetail> {
                 elevation: 0.0,
                 flexibleSpace: FlexibleSpaceBar(
                     background: Image.network(
-                  "https://image.tmdb.org/t/p/w500$posterUrl",
+                  "https://image.tmdb.org/t/p/w500${args.posterUrl}",
                   fit: BoxFit.cover,
                 )),
               ),
@@ -96,7 +75,7 @@ class MovieDetailState extends State<MovieDetail> {
               children: <Widget>[
                 Container(margin: EdgeInsets.only(top: 5.0)),
                 Text(
-                  title,
+                  args.title,
                   style: TextStyle(
                     fontSize: 25.0,
                     fontWeight: FontWeight.bold,
@@ -113,7 +92,7 @@ class MovieDetailState extends State<MovieDetail> {
                       margin: EdgeInsets.only(left: 1.0, right: 1.0),
                     ),
                     Text(
-                      voteAverage,
+                      args.voteAverage,
                       style: TextStyle(
                         fontSize: 18.0,
                       ),
@@ -122,7 +101,7 @@ class MovieDetailState extends State<MovieDetail> {
                       margin: EdgeInsets.only(left: 10.0, right: 10.0),
                     ),
                     Text(
-                      releaseDate,
+                      args.releaseDate,
                       style: TextStyle(
                         fontSize: 18.0,
                       ),
@@ -130,7 +109,7 @@ class MovieDetailState extends State<MovieDetail> {
                   ],
                 ),
                 Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
-                Text(description),
+                Text(args.description),
                 Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
                 Text(
                   "Trailer",
@@ -142,13 +121,11 @@ class MovieDetailState extends State<MovieDetail> {
                 Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0)),
                 StreamBuilder(
                   stream: bloc.movieTrailers,
-                  builder:
-                      (context, AsyncSnapshot<Future<TrailerModel>> snapshot) {
+                  builder: (context, AsyncSnapshot<Future<TrailerModel>> snapshot) {
                     if (snapshot.hasData) {
                       return FutureBuilder(
                         future: snapshot.data,
-                        builder: (context,
-                            AsyncSnapshot<TrailerModel> itemSnapShot) {
+                        builder: (context, AsyncSnapshot<TrailerModel> itemSnapShot) {
                           if (itemSnapShot.hasData) {
                             if (itemSnapShot.hasData)
                               return trailerLayout(itemSnapShot.data!);
