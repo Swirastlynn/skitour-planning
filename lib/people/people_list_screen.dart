@@ -5,6 +5,8 @@ import 'package:skitour_planning/people/post.dart';
 import 'details_screen.dart';
 
 class PeopleListScreen extends StatefulWidget {
+  static const ROUTE = '/people';
+
   PeopleListScreen({Key? key}) : super(key: key);
 
   @override
@@ -54,9 +56,9 @@ class _PeopleListScreenState extends State<PeopleListScreen> {
   Widget getRow(int i) {
     return MaterialButton(
       onPressed: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(builder: (context) => DetailsScreen()),
+          DetailsScreen.ROUTE,
         );
       },
       child: Padding(

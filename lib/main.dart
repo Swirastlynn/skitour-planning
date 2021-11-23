@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:skitour_planning/people/details_screen.dart';
 import 'package:skitour_planning/people/people_list_screen.dart';
 import 'package:skitour_planning/piechart/my_schedule.dart';
 import 'package:skitour_planning/piechart/piechart_home_screen.dart';
@@ -11,6 +12,8 @@ void main() {
 }
 
 class TatraSkitourApp extends StatelessWidget {
+  static const ROOT_ROUTE = '/';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,10 +23,11 @@ class TatraSkitourApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => ExamplesScreen(),
+        ROOT_ROUTE: (context) => ExamplesScreen(),
         // When navigating to the "/second" route, build the SecondScreen widget.
-        '/people': (context) => PeopleListScreen(), // todo move routes to widget classes
-        '/piechart': (context) => ChangeNotifierProvider(
+        PeopleListScreen.ROUTE: (context) => PeopleListScreen(),
+        DetailsScreen.ROUTE: (context) => DetailsScreen(),
+        PiechartHomeScreen.ROUTE: (context) => ChangeNotifierProvider(
               create: (context) => MySchedule(),
               child: PiechartHomeScreen(),
             ),
