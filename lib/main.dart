@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:skitour_planning/movies/ui/movie_list.dart';
 import 'package:skitour_planning/people/people_list_screen.dart';
 import 'package:skitour_planning/piechart/my_schedule.dart';
 import 'package:skitour_planning/piechart/piechart_home_screen.dart';
 
 import 'examples/examples_screen.dart';
-import 'movies/ui/movie_detail.dart';
 
 void main() {
   runApp(TatraSkitourApp());
@@ -29,8 +27,6 @@ class TatraSkitourApp extends StatelessWidget {
               create: (context) => MySchedule(),
               child: PiechartHomeScreen(),
             ),
-        '/movies': (context) => MovieList(),
-        '/movies/details': (context) => MovieDetail(),
       },
     );
   }

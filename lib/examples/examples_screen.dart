@@ -17,10 +17,6 @@ class ExamplesScreen extends StatelessWidget {
             text: "Pie Chart",
             path: "/piechart",
           ),
-          ExampleRow(
-            text: "Popular Movies",
-            path: "/movies",
-          ),
         ],
       ),
     );
