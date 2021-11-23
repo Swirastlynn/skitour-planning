@@ -1,66 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:skitour_planning/people/details_screen.dart';
+import 'package:skitour_planning/people/people_list_screen.dart';
+import 'package:skitour_planning/piechart/my_schedule.dart';
+import 'package:skitour_planning/piechart/piechart_home_screen.dart';
+
+import 'examples/examples_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(TatraSkitourApp());
 }
 
-class MyApp extends StatelessWidget {
+class TatraSkitourApp extends StatelessWidget {
+  static const ROOT_ROUTE = '/';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Skitury w Tatrach',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Planowanie'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+      initialRoute: '/',
+      routes: {
+        ROOT_ROUTE: (context) => ExamplesScreen(),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        PeopleListScreen.ROUTE: (context) => PeopleListScreen(),
+        DetailsScreen.ROUTE: (context) => DetailsScreen(),
+        PiechartHomeScreen.ROUTE: (context) => ChangeNotifierProvider(
+              create: (context) => MySchedule(),
+              child: PiechartHomeScreen(),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+      },
     );
   }
 }
