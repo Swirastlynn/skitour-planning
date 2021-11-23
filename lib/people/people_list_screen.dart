@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skitour_planning/general/network/api_manager.dart';
+import 'package:skitour_planning/main.dart';
 import 'package:skitour_planning/people/post.dart';
 
 import 'details_screen.dart';
@@ -25,14 +26,13 @@ class _PeopleListScreenState extends State<PeopleListScreen> {
 
   Future<void> loadPosts() async {
     try {
-      var jsonResponse = await apiManager
-          .getAPICall(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
+      var jsonResponse =
+          await apiManager.getAPICall(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
       setState(() {
-        posts = jsonResponse.map<Post>((site) => Post.fromJson(site)).toList()
-            as List<Post>;
+        posts = jsonResponse.map<Post>((site) => Post.fromJson(site)).toList() as List<Post>;
       });
     } on Exception catch (error) {
-      print('Exception $error'); // there should be appropriate handling
+      logger.e('Exception $error');
     }
   }
 
