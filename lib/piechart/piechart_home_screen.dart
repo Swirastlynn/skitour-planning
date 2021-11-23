@@ -4,6 +4,8 @@ import 'my_chart.dart';
 import 'my_slider.dart';
 
 class PiechartHomeScreen extends StatelessWidget {
+  static const ROUTE = '/piechart';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

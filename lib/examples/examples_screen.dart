@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:skitour_planning/people/people_list_screen.dart';
+import 'package:skitour_planning/piechart/piechart_home_screen.dart';
 
 class ExamplesScreen extends StatelessWidget {
   @override
@@ -11,11 +13,11 @@ class ExamplesScreen extends StatelessWidget {
         children: [
           ExampleRow(
             text: "People List",
-            path: "/people",
+            path: PeopleListScreen.ROUTE,
           ),
           ExampleRow(
             text: "Pie Chart",
-            path: "/piechart",
+            path: PiechartHomeScreen.ROUTE,
           ),
         ],
       ),
