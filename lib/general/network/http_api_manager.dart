@@ -9,7 +9,7 @@ import 'custom_exceptions.dart';
 
 /// Manage API calls for simple http library.
 /// More sophisticated http library should support error handling with its own exceptions.
-class ApiManager {
+class HttpApiManager {
   Future<dynamic> getAPICall(Uri url) async {
     logger.d("Calling API: $url");
 
