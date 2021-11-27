@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
-import 'package:skitour_planning/main.dart';
+import 'package:skitour_planning/general/logger.dart';
 
 import 'custom_exceptions.dart';
 

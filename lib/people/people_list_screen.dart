@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:skitour_planning/general/logger.dart';
 import 'package:skitour_planning/general/network/api_manager.dart';
-import 'package:skitour_planning/main.dart';
 import 'package:skitour_planning/people/post.dart';
 
 import 'details_screen.dart';

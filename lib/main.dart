@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:skitour_planning/people/details_screen.dart';
 import 'package:skitour_planning/people/people_list_screen.dart';
@@ -7,10 +6,6 @@ import 'package:skitour_planning/piechart/my_schedule.dart';
 import 'package:skitour_planning/piechart/piechart_home_screen.dart';
 
 import 'examples/examples_screen.dart';
-
-var logger = Logger(
-  printer: PrettyPrinter(),
-);
 
 void main() {
   runApp(TatraSkitourApp());
