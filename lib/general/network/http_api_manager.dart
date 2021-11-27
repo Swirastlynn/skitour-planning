@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:skitour_planning/general/logger.dart';
 
-import 'custom_exceptions.dart';
+import 'http_network_exceptions.dart';
 
 /// Manage API calls for simple http library.
 /// More sophisticated http library should support error handling with its own exceptions.

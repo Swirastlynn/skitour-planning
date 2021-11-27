@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:skitour_planning/general/network/dio_api_manager.dart';
-import 'package:skitour_planning/main.dart';
+import 'package:skitour_planning/general/network/dio_network_exceptions.dart';
 import 'package:skitour_planning/people/post.dart';
 
 import 'details_screen.dart';
@@ -31,8 +31,8 @@ class _PeopleListScreenState extends State<PeopleListScreen> {
       setState(() {
         posts = postsJsonResponse.map<Post>((site) => Post.fromJson(site)).toList() as List<Post>;
       });
-    } on Exception catch (error) {
-      logger.e('Exception $error');
+    } on NetworkException {
+      // todo UI change
     }
   }
 
