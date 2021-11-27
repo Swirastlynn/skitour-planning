@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 
 /// Network exception For DIO package
@@ -32,7 +34,13 @@ class NetworkExceptionsManager {
         networkException = CancelRequestException();
         break;
       case DioErrorType.other:
-        networkException = OtherNetworkException();
+        if (dioError.error is SocketException) {
+          networkException = NoInternetConnectionException();
+        } else if (dioError.error is FormatException) {
+          networkException = InvalidFormatException();
+        } else {
+          networkException = OtherNetworkException();
+        }
         break;
     }
     return networkException;
@@ -140,4 +148,11 @@ class NoInternetConnectionException implements NetworkException {
 
   @override
   String get message => 'No Internet Connection';
+}
+
+class InvalidFormatException implements NetworkException {
+  const InvalidFormatException();
+
+  @override
+  String get message => 'Invalid format';
 }
