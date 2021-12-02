@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:skitour_planning/main.dart';
+import 'package:skitour_planning/general/logger.dart';
 
 import 'dio_network_exceptions.dart';
 
