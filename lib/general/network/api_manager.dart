@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:skitour_planning/general/logger.dart';
 
 import 'custom_exceptions.dart';
 
@@ -10,7 +11,7 @@ import 'custom_exceptions.dart';
 /// More sophisticated http library should support error handling with its own exceptions.
 class ApiManager {
   Future<dynamic> getAPICall(Uri url) async {
-    print("Calling API: $url"); // todo logger
+    logger.d("Calling API: $url");
 
     var jsonResponse;
     try {
@@ -26,6 +27,7 @@ class ApiManager {
     var statusCode = response.statusCode;
     if (statusCode >= 200 && statusCode < 300) {
       final decodedJson = utf8.decode(response.bodyBytes);
+      logger.d("API Response: $decodedJson");
       return json.decode(decodedJson);
     } else if (statusCode >= 300 && statusCode < 400) {
       throw NotSupportedStatusCodeException(statusCode);
