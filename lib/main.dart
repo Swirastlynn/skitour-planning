@@ -3,6 +3,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:provider/provider.dart';
+import 'package:skitour_planning/oneoften/one_of_ten_screen.dart';
 import 'package:skitour_planning/people/details_screen.dart';
 import 'package:skitour_planning/people/people_list_screen.dart';
 import 'package:skitour_planning/piechart/my_schedule.dart';
@@ -37,6 +38,7 @@ class TatraSkitourApp extends StatelessWidget {
                   child: PiechartHomeScreen(),
                 ),
             transition: Transition.zoom),
+        GetPage(name: OneOfTen.ROUTE, page: () => OneOfTen(), transition: Transition.fadeIn),
       ],
     );
   }

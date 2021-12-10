@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:skitour_planning/oneoften/one_of_ten_screen.dart';
 import 'package:skitour_planning/people/people_list_screen.dart';
 import 'package:skitour_planning/piechart/piechart_home_screen.dart';
 
@@ -19,6 +20,10 @@ class ExamplesScreen extends StatelessWidget {
           ExampleRow(
             text: "Pie Chart",
             path: PiechartHomeScreen.ROUTE,
+          ),
+          ExampleRow(
+            text: "1 z 10",
+            path: OneOfTen.ROUTE,
           ),
         ],
       ),
