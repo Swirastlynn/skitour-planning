@@ -4,6 +4,6 @@ targets:
       freezed:freezed:
         generate_for:
           include:
-            - lib/people/model/**.dart
+            - lib/**/model/**.dart
 
 # based on https://codewithandrea.com/tips/speed-up-code-generation-build-runner-dart-flutter/
