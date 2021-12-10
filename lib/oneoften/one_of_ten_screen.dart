@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:skitour_planning/oneoften/phase_1_screen.dart';
 
-class OneOfTen extends StatefulWidget {
+class OneOfTenScreen extends StatefulWidget {
   static const ROUTE = '/oneoften';
 
   @override
-  State<OneOfTen> createState() => _OneOfTenState();
+  State<OneOfTenScreen> createState() => _OneOfTenScreenState();
 }
 
-class _OneOfTenState extends State<OneOfTen> {
+class _OneOfTenScreenState extends State<OneOfTenScreen> {
   @override
   void initState() {
     super.initState();
@@ -23,7 +25,56 @@ class _OneOfTenState extends State<OneOfTen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
-        children: <Widget>[],
+        children: <Widget>[
+          Expanded(
+            child: Center(
+              child: Text('menu'),
+            ),
+          ),
+          Expanded(
+            child: Center(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: MaterialButton(
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text('Etap 1'),
+                        ),
+                        onPressed: () {
+                          Get.toNamed(Phase1Screen.ROUTE);
+                        },
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: MaterialButton(
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text('Etap 2'),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: MaterialButton(
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text('Etap 3'),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

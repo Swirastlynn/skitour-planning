@@ -23,7 +23,7 @@ class ExamplesScreen extends StatelessWidget {
           ),
           ExampleRow(
             text: "1 z 10",
-            path: OneOfTen.ROUTE,
+            path: OneOfTenScreen.ROUTE,
           ),
         ],
       ),
