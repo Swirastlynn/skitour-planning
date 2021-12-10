@@ -5,7 +5,6 @@ import 'package:dio/dio.dart';
 /// Network exception For DIO package
 
 class NetworkExceptionsManager {
-  // todo what about SocketException?
   NetworkExceptionsManager._internal();
 
   factory NetworkExceptionsManager() => NetworkExceptionsManager._internal();
@@ -155,4 +154,6 @@ class InvalidFormatException implements NetworkException {
 
   @override
   String get message => 'Invalid format';
+  // todo All the above methods are the same except message.
+  // How about creating an object with messages and taking properly depending on the exception type?
 }
