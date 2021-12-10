@@ -5,10 +5,10 @@ import 'package:skitour_planning/general/logger.dart';
 
 import 'dio_network_exceptions.dart';
 
-const _defaultConnectTimeout = 5000;
-const _defaultReceiveTimeout = 3000;
-
 class DioApiManager {
+  static const _defaultConnectTimeout = 5000;
+  static const _defaultReceiveTimeout = 3000;
+
   final Dio _dio = Dio(
     BaseOptions(
       headers: {'Content-Type': 'application/json; charset=UTF-8'},
