@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:skitour_planning/people/people_list_screen.dart';
 import 'package:skitour_planning/piechart/piechart_home_screen.dart';
 
@@ -42,10 +43,7 @@ class ExampleRow extends StatelessWidget {
         Expanded(
           child: MaterialButton(
             onPressed: () {
-              Navigator.pushNamed(
-                context,
-                path,
-              );
+              Get.toNamed(path);
             },
             child: Padding(
               padding: EdgeInsets.all(12.0),

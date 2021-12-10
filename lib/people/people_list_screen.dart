@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:skitour_planning/general/network/dio_api_manager.dart';
 import 'package:skitour_planning/general/network/dio_network_exceptions.dart';
 import 'package:skitour_planning/people/model/post.dart';
@@ -56,10 +57,7 @@ class _PeopleListScreenState extends State<PeopleListScreen> {
   Widget getRow(int i) {
     return MaterialButton(
       onPressed: () {
-        Navigator.pushNamed(
-          context,
-          DetailsScreen.ROUTE,
-        );
+        Get.toNamed(DetailsScreen.ROUTE);
       },
       child: Padding(
         padding: EdgeInsets.all(12.0),

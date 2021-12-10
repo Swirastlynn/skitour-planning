@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:provider/provider.dart';
 import 'package:skitour_planning/people/details_screen.dart';
 import 'package:skitour_planning/people/people_list_screen.dart';
@@ -16,22 +19,25 @@ class TatraSkitourApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Skitury w Tatrach',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
-      routes: {
-        ROOT_ROUTE: (context) => ExamplesScreen(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        PeopleListScreen.ROUTE: (context) => PeopleListScreen(),
-        DetailsScreen.ROUTE: (context) => DetailsScreen(),
-        PiechartHomeScreen.ROUTE: (context) => ChangeNotifierProvider(
-              create: (context) => MySchedule(),
-              child: PiechartHomeScreen(),
-            ),
-      },
+      getPages: [
+        GetPage(name: ROOT_ROUTE, page: () => ExamplesScreen()),
+        GetPage(name: PeopleListScreen.ROUTE, page: () => PeopleListScreen()),
+        GetPage(
+            name: DetailsScreen.ROUTE, page: () => DetailsScreen(), transition: Transition.zoom),
+        GetPage(
+            name: PiechartHomeScreen.ROUTE,
+            page: () => ChangeNotifierProvider(
+                  create: (context) => MySchedule(),
+                  child: PiechartHomeScreen(),
+                ),
+            transition: Transition.zoom),
+      ],
     );
   }
 }
