@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:skitour_planning/oneoften/phase_1_screen.dart';
+import 'package:skitour_planning/oneoften/phase_2_screen.dart';
+import 'package:skitour_planning/oneoften/phase_3_screen.dart';
 
 class OneOfTenScreen extends StatefulWidget {
   static const ROUTE = '/oneoften';
@@ -55,7 +57,9 @@ class _OneOfTenScreenState extends State<OneOfTenScreen> {
                           padding: const EdgeInsets.all(16.0),
                           child: Text('Etap 2'),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(Phase2Screen.ROUTE);
+                        },
                       ),
                     ),
                   ),
@@ -66,7 +70,9 @@ class _OneOfTenScreenState extends State<OneOfTenScreen> {
                           padding: const EdgeInsets.all(16.0),
                           child: Text('Etap 3'),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(Phase3Screen.ROUTE);
+                        },
                       ),
                     ),
                   ),

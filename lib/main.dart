@@ -11,6 +11,8 @@ import 'package:skitour_planning/piechart/piechart_home_screen.dart';
 
 import 'examples/examples_screen.dart';
 import 'oneoften/phase_1_screen.dart';
+import 'oneoften/phase_2_screen.dart';
+import 'oneoften/phase_3_screen.dart';
 
 void main() {
   runApp(TatraSkitourApp());
@@ -41,6 +43,8 @@ class TatraSkitourApp extends StatelessWidget {
             transition: Transition.zoom),
         GetPage(name: OneOfTenScreen.ROUTE, page: () => OneOfTenScreen(), transition: Transition.fadeIn),
         GetPage(name: Phase1Screen.ROUTE, page: () => Phase1Screen()),
+        GetPage(name: Phase2Screen.ROUTE, page: () => Phase2Screen()),
+        GetPage(name: Phase3Screen.ROUTE, page: () => Phase3Screen()),
       ],
     );
   }
