@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:skitour_planning/oneoften/phase_1_screen.dart';
-import 'package:skitour_planning/oneoften/phase_2_screen.dart';
-import 'package:skitour_planning/oneoften/phase_3_screen.dart';
+import 'package:skitour_planning/oneoften/ui/phase_1_screen.dart';
+import 'package:skitour_planning/oneoften/ui/phase_2_screen.dart';
+import 'package:skitour_planning/oneoften/ui/phase_3_screen.dart';
 
 class OneOfTenScreen extends StatefulWidget {
   static const ROUTE = '/oneoften';

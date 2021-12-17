@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skitour_planning/oneoften/one_of_ten_screen.dart';
+import 'package:skitour_planning/oneoften/ui/one_of_ten_screen.dart';
 import 'package:skitour_planning/people/people_list_screen.dart';
 import 'package:skitour_planning/piechart/piechart_home_screen.dart';
 
