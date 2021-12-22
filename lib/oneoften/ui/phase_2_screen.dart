@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:skitour_planning/oneoften/presentation/phase_1_controller.dart';
 import 'package:skitour_planning/oneoften/ui/paper_sheet.dart';
+import 'package:skitour_planning/oneoften/ui/random_generator.dart';
 
 class Phase2Screen extends StatefulWidget {
   static const ROUTE = '/oneoften/phase2';
@@ -13,6 +14,7 @@ class Phase2Screen extends StatefulWidget {
 
 class _Phase2ScreenState extends State<Phase2Screen> {
   final Phase1Controller controller = Get.put(Phase1Controller());
+  final RandomGenerator randomGenerator = RandomGenerator();
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +25,22 @@ class _Phase2ScreenState extends State<Phase2Screen> {
           color: Colors.white,
           child: Stack(
             children: [
-              PaperSheet(controller: controller, color: Colors.green, rotationZ: -0.05),
-              PaperSheet(controller: controller, color: Colors.deepOrangeAccent, rotationZ: 0.05),
-              PaperSheet(controller: controller, color: Colors.deepPurpleAccent, rotationZ: 0.1),
-              PaperSheet(controller: controller, color: Colors.red, rotationZ: -0.1),
+              PaperSheet(
+                  controller: controller,
+                  color: Colors.green,
+                  rotationZ: randomGenerator.nextRadius()),
+              PaperSheet(
+                  controller: controller,
+                  color: Colors.deepOrangeAccent,
+                  rotationZ: randomGenerator.nextRadius()),
+              PaperSheet(
+                  controller: controller,
+                  color: Colors.deepPurpleAccent,
+                  rotationZ: randomGenerator.nextRadius()),
+              PaperSheet(
+                  controller: controller,
+                  color: Colors.red,
+                  rotationZ: randomGenerator.nextRadius()),
             ],
           ),
         ),
