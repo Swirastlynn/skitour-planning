@@ -18,54 +18,75 @@ class _Phase1ScreenState extends State<Phase1Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(32.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text('Etap I'),
-            ),
-            Obx(() {
-              return Padding(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Container(
+                color: Color.fromARGB(255, 255, 0, 0),
                 padding: const EdgeInsets.all(12.0),
-                child: Text('Pytanie ${controller.currentQuestionNumber}'),
-              );
-            }),
-            Obx(() {
-              return Padding(
+                child: Text('Etap I'),
+              ),
+              Container(
+                color: Color.fromARGB(255, 255, 50, 0),
                 padding: const EdgeInsets.all(12.0),
-                child: Text('${controller.currentQuestionText}'),
-              );
-            }),
-            Row(
-              children: [
-                Expanded(
-                  child: MaterialButton(
-                    onPressed: () {
-                      controller.decrement();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text("Poprzednie"),
-                    ),
-                  ),
+                child: Obx(() {
+                  return Text('Pytanie ${controller.currentQuestionNumber}');
+                }),
+              ),
+              Expanded(
+                child: Container(
+                  color: Color.fromARGB(255, 255, 100, 0),
+                  padding: const EdgeInsets.all(12.0),
+                  child: Obx(() {
+                    return Text('${controller.currentQuestionText}');
+                  }),
                 ),
-                Expanded(
-                  child: MaterialButton(
-                    onPressed: () {
-                      controller.increment();
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text("Następne"),
-                    ),
-                  ),
+              ),
+              Expanded(
+                child: Container(
+                  color: Color.fromARGB(255, 255, 100, 0),
+                  padding: const EdgeInsets.all(12.0),
+                  child: Obx(() {
+                    return Text('Odpowiedź: ${controller.currentQuestionAnswer}');
+                  }),
                 ),
-              ],
-            ),
-          ],
+              ),
+              Container(
+                color: Color.fromRGBO(0, 255, 255, 1),
+                child: Row(
+                  children: [
+                    Container(
+                      color: Color.fromRGBO(0, 255, 0, 1),
+                      padding: const EdgeInsets.all(12.0),
+                      margin: const EdgeInsets.all(12.0),
+                      alignment: Alignment.bottomLeft,
+                      child: MaterialButton(
+                        onPressed: () {
+                          controller.decrement();
+                        },
+                        child: Text("Poprzednie"),
+                      ),
+                    ),
+                    Spacer(),
+                    Container(
+                      color: Color.fromRGBO(0, 255, 50, 1),
+                      padding: const EdgeInsets.all(12.0),
+                      margin: const EdgeInsets.all(12.0),
+                      alignment: Alignment.bottomRight,
+                      child: MaterialButton(
+                        onPressed: () {
+                          controller.increment();
+                        },
+                        child: Text("Następne"),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
