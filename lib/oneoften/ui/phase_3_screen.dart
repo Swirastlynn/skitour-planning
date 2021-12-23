@@ -8,7 +8,7 @@ class Phase3Screen extends StatefulWidget {
 }
 
 class _Phase3ScreenState extends State<Phase3Screen> {
-  int acceptedData = 0;
+  int acceptedData = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +32,11 @@ class _Phase3ScreenState extends State<Phase3Screen> {
               );
             },
             onAccept: (int data) {
-              setState(() {
-                acceptedData += data;
-              });
+              if (acceptedData >= 1) {
+                setState(() {
+                  acceptedData -= data;
+                });
+              }
             },
             onWillAccept: (item) {
               debugPrint('draggable is on the target $item');
@@ -46,57 +48,43 @@ class _Phase3ScreenState extends State<Phase3Screen> {
           ),
           Center(
             child: Stack(
-              children: [
-                Draggable<int>(
-                  // Data is the value this Draggable stores.
-                  data: 10,
-                  child: Container(
-                    height: 300.0,
-                    width: 300.0,
-                    color: Colors.lightGreenAccent,
-                    child: const Center(
-                      child: Text('Draggable'),
-                    ),
-                  ),
-                  childWhenDragging: Container(
-                    height: 300.0,
-                    width: 300.0,
-                  ),
-                  feedback: Container(
-                    color: Colors.deepOrange,
-                    height: 300,
-                    width: 300,
-                    child: const Icon(Icons.directions_run),
-                  ),
-                ),
-                Draggable<int>(
-                  // Data is the value this Draggable stores.
-                  data: 10,
-                  child: Container(
-                    transform: Matrix4.rotationZ(0.02),
-                    height: 300.0,
-                    width: 300.0,
-                    color: Colors.blue,
-                    child: const Center(
-                      child: Text('Draggable'),
-                    ),
-                  ),
-                  childWhenDragging: Container(
-                    height: 300.0,
-                    width: 300.0,
-                  ),
-                  feedback: Container(
-                    color: Colors.deepOrange,
-                    height: 300,
-                    width: 300,
-                    child: const Icon(Icons.directions_run),
-                  ),
-                ),
-              ],
+              children: _getDraggable(acceptedData),
             ),
           ),
         ],
       ),
     );
   }
+}
+
+List<Widget> _getDraggable(int acceptedData) {
+  List<Widget> listings = [];
+  int i = 0;
+  for (i = 0; i < acceptedData; i++) {
+    listings.add(
+      Draggable<int>(
+        // Data is the value this Draggable stores.
+        data: 1,
+        child: Container(
+          height: 300.0,
+          width: 300.0,
+          color: Colors.lightGreenAccent,
+          child: const Center(
+            child: Text('Draggable'),
+          ),
+        ),
+        childWhenDragging: Container(
+          height: 300.0,
+          width: 300.0,
+        ),
+        feedback: Container(
+          color: Colors.deepOrange,
+          height: 300,
+          width: 300,
+          child: const Icon(Icons.directions_run),
+        ),
+      ),
+    );
+  }
+  return listings;
 }
