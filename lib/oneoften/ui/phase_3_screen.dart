@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:skitour_planning/general/logger.dart';
+import 'package:skitour_planning/oneoften/presentation/phase_3_controller.dart';
 
-class Phase3Screen extends StatefulWidget {
+class Phase3Screen extends StatelessWidget {
   static const ROUTE = '/oneoften/phase3';
 
-  @override
-  State<Phase3Screen> createState() => _Phase3ScreenState();
-}
-
-class _Phase3ScreenState extends State<Phase3Screen> {
-  static const int ONE = 1;
-  int itemsCounter = 3;
+  final Phase3Controller controller = Get.put(Phase3Controller());
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +25,15 @@ class _Phase3ScreenState extends State<Phase3Screen> {
                 color: Colors.cyan,
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: Text('Value is updated to: $itemsCounter'),
+                  child: Obx(() {
+                    return Text('Question number: ${controller.getQuestionNumber()}');
+                  }),
                 ),
               );
             },
             onAccept: (int oneCounter) {
-              if (itemsCounter >= 1) {
-                setState(() {
-                  itemsCounter -= oneCounter;
-                });
-              }
+              debugPrint('draggable onAccept');
+              controller.nextQuestion();
             },
             onWillAccept: (item) {
               debugPrint('draggable is on the target $item');
@@ -48,43 +44,47 @@ class _Phase3ScreenState extends State<Phase3Screen> {
             },
           ),
           Center(
-            child: Stack(
-              children: _getDraggable(itemsCounter, ONE),
+            child: Obx(
+              () {
+                return Stack(
+                  children: _getDraggable(controller.getQuestionsStackSize()),
+                );
+              },
             ),
           ),
         ],
       ),
     );
   }
-}
 
-List<Widget> _getDraggable(int numberOfItems, int oneCounter) {
-  List<Widget> listings = [];
-  int i = 0;
-  for (i = 0; i < numberOfItems; i++) {
-    listings.add(
-      Draggable<int>(
-        data: oneCounter, // data kept by draggable.
-        child: Container(
-          height: 300.0,
-          width: 300.0,
-          color: Colors.lightGreenAccent,
-          child: const Center(
-            child: Text('Draggable'),
+  List<Widget> _getDraggable(RxInt currentQuestionsStackSize) {
+    List<Widget> listings = [];
+    int i = 0;
+    for (i = 0; i < currentQuestionsStackSize.value; i++) {
+      listings.add(
+        Draggable<int>(
+          data: 1, // todo what is it for now?
+          child: Container(
+            height: 300.0,
+            width: 300.0,
+            color: Colors.lightGreenAccent,
+            child: Center(
+              child: Text('Draggable: ${currentQuestionsStackSize}'),
+            ),
+          ),
+          childWhenDragging: Container(
+            height: 300.0,
+            width: 300.0,
+          ),
+          feedback: Container(
+            color: Colors.deepOrange,
+            height: 300,
+            width: 300,
+            child: const Icon(Icons.directions_run),
           ),
         ),
-        childWhenDragging: Container(
-          height: 300.0,
-          width: 300.0,
-        ),
-        feedback: Container(
-          color: Colors.deepOrange,
-          height: 300,
-          width: 300,
-          child: const Icon(Icons.directions_run),
-        ),
-      ),
-    );
+      );
+    }
+    return listings;
   }
-  return listings;
 }

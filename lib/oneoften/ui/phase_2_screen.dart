@@ -12,7 +12,6 @@ class Phase2Screen extends StatefulWidget {
 }
 
 class _Phase2ScreenState extends State<Phase2Screen> {
-  final Phase1Controller controller = Get.put(Phase1Controller());
 
   @override
   Widget build(BuildContext context) {
