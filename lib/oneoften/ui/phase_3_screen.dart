@@ -8,7 +8,8 @@ class Phase3Screen extends StatefulWidget {
 }
 
 class _Phase3ScreenState extends State<Phase3Screen> {
-  int acceptedData = 3;
+  static const int ONE = 1;
+  int itemsCounter = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +28,14 @@ class _Phase3ScreenState extends State<Phase3Screen> {
                 color: Colors.cyan,
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: Text('Value is updated to: $acceptedData'),
+                  child: Text('Value is updated to: $itemsCounter'),
                 ),
               );
             },
-            onAccept: (int data) {
-              if (acceptedData >= 1) {
+            onAccept: (int oneCounter) {
+              if (itemsCounter >= 1) {
                 setState(() {
-                  acceptedData -= data;
+                  itemsCounter -= oneCounter;
                 });
               }
             },
@@ -48,7 +49,7 @@ class _Phase3ScreenState extends State<Phase3Screen> {
           ),
           Center(
             child: Stack(
-              children: _getDraggable(acceptedData),
+              children: _getDraggable(itemsCounter, ONE),
             ),
           ),
         ],
@@ -57,14 +58,13 @@ class _Phase3ScreenState extends State<Phase3Screen> {
   }
 }
 
-List<Widget> _getDraggable(int acceptedData) {
+List<Widget> _getDraggable(int numberOfItems, int oneCounter) {
   List<Widget> listings = [];
   int i = 0;
-  for (i = 0; i < acceptedData; i++) {
+  for (i = 0; i < numberOfItems; i++) {
     listings.add(
       Draggable<int>(
-        // Data is the value this Draggable stores.
-        data: 1,
+        data: oneCounter, // data kept by draggable.
         child: Container(
           height: 300.0,
           width: 300.0,
