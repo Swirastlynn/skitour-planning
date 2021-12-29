@@ -1,30 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:skitour_planning/general/logger.dart';
 import 'package:skitour_planning/oneoften/presentation/phase_1_controller.dart';
+import 'package:skitour_planning/oneoften/ui/random_generator.dart';
 
 class PaperSheet extends StatelessWidget {
-  const PaperSheet({
+  PaperSheet({
     Key? key,
-    required this.controller,
-    required this.color,
-    required this.rotationZ,
   }) : super(key: key);
 
-  final Phase1Controller controller;
-  final Color color;
-  final double rotationZ;
+  final Phase1Controller controller = Get.find();
+  final RandomGenerator randomGenerator = RandomGenerator();
 
   @override
   Widget build(BuildContext context) {
-    logger.d("PaperSheet $rotationZ");
     return Container(
-      transform: Matrix4.rotationZ(rotationZ),
+      transform: Matrix4.rotationZ(randomGenerator.nextRadius()),
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
         child: Container(
-          color: color,
+          color: randomGenerator.nextColor(),
           child: Column(children: [
             Expanded(
               child: Container(
