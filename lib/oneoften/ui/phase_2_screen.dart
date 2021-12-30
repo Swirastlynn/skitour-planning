@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:skitour_planning/oneoften/presentation/phase_1_controller.dart';
+import 'package:skitour_planning/oneoften/presentation/questions_controller.dart';
 import 'package:skitour_planning/oneoften/ui/paper_sheet.dart';
 
 class Phase2Screen extends StatefulWidget {
@@ -12,6 +12,7 @@ class Phase2Screen extends StatefulWidget {
 }
 
 class _Phase2ScreenState extends State<Phase2Screen> {
+  final QuestionsController controller = Get.put(QuestionsController());
 
   @override
   Widget build(BuildContext context) {

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:skitour_planning/general/logger.dart';
-import 'package:skitour_planning/oneoften/presentation/phase_3_controller.dart';
+import 'package:skitour_planning/oneoften/presentation/questions_controller.dart';
 
 class Phase3Screen extends StatelessWidget {
   static const ROUTE = '/oneoften/phase3';
 
-  final Phase3Controller controller = Get.put(Phase3Controller());
+  final QuestionsController controller = Get.put(QuestionsController());
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
-import 'package:skitour_planning/oneoften/presentation/phase_1_controller.dart';
+import 'package:skitour_planning/oneoften/presentation/questions_controller.dart';
 
 class Phase1Screen extends StatefulWidget {
   static const ROUTE = '/oneoften/phase1';
@@ -13,7 +13,7 @@ class Phase1Screen extends StatefulWidget {
 
 class _Phase1ScreenState extends State<Phase1Screen> {
   // Instantiate your class using Get.put() to make it available for all "child" routes there.
-  final Phase1Controller controller = Get.put(Phase1Controller());
+  final QuestionsController controller = Get.put(QuestionsController());
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _Phase1ScreenState extends State<Phase1Screen> {
                 color: Color.fromARGB(255, 255, 50, 0),
                 padding: const EdgeInsets.all(12.0),
                 child: Obx(() {
-                  return Text('Pytanie ${controller.currentQuestionNumber}');
+                  return Text('Pytanie ${controller.getQuestionNumber()}');
                 }),
               ),
               Expanded(
@@ -64,7 +64,7 @@ class _Phase1ScreenState extends State<Phase1Screen> {
                       alignment: Alignment.bottomLeft,
                       child: MaterialButton(
                         onPressed: () {
-                          controller.decrement();
+                          controller.previousQuestion();
                         },
                         child: Text("Poprzednie"),
                       ),
@@ -77,7 +77,7 @@ class _Phase1ScreenState extends State<Phase1Screen> {
                       alignment: Alignment.bottomRight,
                       child: MaterialButton(
                         onPressed: () {
-                          controller.increment();
+                          controller.nextQuestion();
                         },
                         child: Text("Następne"),
                       ),

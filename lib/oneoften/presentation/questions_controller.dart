@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:skitour_planning/oneoften/data/questions_repository.dart';
 
-class Phase3Controller extends GetxController {
+class QuestionsController extends GetxController {
   // todo simplify question numbers and stack size
   RxInt _currentQuestionNumber = 1.obs;
   RxInt _currentQuestionsStackSize = 3.obs;

@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:skitour_planning/oneoften/presentation/phase_1_controller.dart';
+import 'package:skitour_planning/oneoften/presentation/questions_controller.dart';
 import 'package:skitour_planning/theme_colors.dart';
 import 'package:tuple/tuple.dart';
 
@@ -12,7 +12,9 @@ class PaperSheet extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final Phase1Controller controller = Get.find();
+  // TODO controller should be probably moved up, or used in a different way,
+  //  to separate abstraction from the PaperSheet
+  final QuestionsController controller = Get.find();
   final Random _random = new Random();
 
   final _colors = [
