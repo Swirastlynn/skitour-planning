@@ -30,7 +30,7 @@ class QuestionsController extends GetxController {
     }
   }
 
-  RxInt getQuestionNumber() => _currentQuestionNumber;
+  int get getQuestionNumber => _currentQuestionNumber.value;
 
-  RxInt getQuestionsStackSize() => _currentQuestionsStackSize;
+  int get getQuestionsStackSize => _currentQuestionsStackSize.value;
 }

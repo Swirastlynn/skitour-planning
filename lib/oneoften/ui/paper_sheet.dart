@@ -7,14 +7,11 @@ import 'package:skitour_planning/oneoften/presentation/questions_controller.dart
 import 'package:skitour_planning/theme_colors.dart';
 import 'package:tuple/tuple.dart';
 
-class PaperSheet extends StatelessWidget {
+class PaperSheet extends GetView<QuestionsController> {
   PaperSheet({
     Key? key,
   }) : super(key: key);
 
-  // TODO controller should be probably moved up, or used in a different way,
-  //  to separate abstraction from the PaperSheet
-  final QuestionsController controller = Get.find();
   final Random _random = new Random();
 
   final _colors = [
