@@ -32,7 +32,7 @@ class _Phase1ScreenState extends State<Phase1Screen> {
                 color: Color.fromARGB(255, 255, 50, 0),
                 padding: const EdgeInsets.all(12.0),
                 child: Obx(() {
-                  return Text('Pytanie ${controller.getQuestionNumber}');
+                  return Text('Question ${controller.getQuestionNumber}');
                 }),
               ),
               Expanded(
@@ -49,7 +49,7 @@ class _Phase1ScreenState extends State<Phase1Screen> {
                   color: Color.fromARGB(255, 255, 100, 0),
                   padding: const EdgeInsets.all(12.0),
                   child: Obx(() {
-                    return Text('Odpowiedź: ${controller.currentQuestionAnswer}');
+                    return Text('Answer: ${controller.currentQuestionAnswer}');
                   }),
                 ),
               ),

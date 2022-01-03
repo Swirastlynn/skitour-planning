@@ -23,10 +23,12 @@ class _Phase2ScreenState extends State<Phase2Screen> {
           color: Colors.white,
           child: Stack(
             children: [
-              PaperSheet(),
-              PaperSheet(),
-              PaperSheet(),
-              PaperSheet(),
+              // todo questionNumber should depend on a list of questions from controller
+              PaperSheet(questionNumber: 1),
+              PaperSheet(questionNumber: 2),
+              PaperSheet(questionNumber: 3),
+              PaperSheet(questionNumber: 4),
+              PaperSheet(questionNumber: 5),
             ],
           ),
         ),

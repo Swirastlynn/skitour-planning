@@ -1,37 +1,27 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:skitour_planning/oneoften/presentation/questions_controller.dart';
-import 'package:skitour_planning/theme_colors.dart';
-import 'package:tuple/tuple.dart';
 
+// todo every PaperSheet keeps QuestionsController :( Looks non optimal.
 class PaperSheet extends GetView<QuestionsController> {
   PaperSheet({
+    required this.questionNumber,
     Key? key,
   }) : super(key: key);
 
-  final Random _random = new Random();
-
-  final _colors = [
-    Tuple2(ThemeColors.burntSienna, Colors.white),
-    Tuple2(ThemeColors.charcoal, Colors.white),
-    Tuple2(ThemeColors.orangeYellowCrayola, Colors.black),
-    Tuple2(ThemeColors.persianGreen, Colors.black),
-    Tuple2(ThemeColors.sandyBrown, Colors.white),
-  ];
+  final questionNumber;
 
   @override
   Widget build(BuildContext context) {
-    var chosenColors = nextRandomColorSet();
-
     return Container(
-      transform: Matrix4.rotationZ(nextRotationZ()),
+      transform: Matrix4.rotationZ(controller.assignedRotationZ(questionNumber)),
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
         child: Container(
-          color: chosenColors.item1,
+          width: 250,
+          height: 420,
+          color: controller.assignedBackgroundColor(questionNumber),
           child: Column(children: [
             Expanded(
               child: Container(
@@ -40,9 +30,9 @@ class PaperSheet extends GetView<QuestionsController> {
                 child: Obx(
                   () {
                     return Text(
-                      '${controller.currentQuestionText}',
+                      'Question: ${controller.currentQuestionText}',
                       style: TextStyle(
-                        color: chosenColors.item2,
+                        color: controller.assignedTextColor(questionNumber),
                       ),
                     );
                   },
@@ -55,9 +45,9 @@ class PaperSheet extends GetView<QuestionsController> {
                 child: Obx(() {
                   return Center(
                     child: Text(
-                      'Odpowiedź: ${controller.currentQuestionAnswer}',
+                      'Answer: ${controller.currentQuestionAnswer}',
                       style: TextStyle(
-                        color: chosenColors.item2,
+                        color: controller.assignedTextColor(questionNumber),
                       ),
                     ),
                   );
@@ -68,14 +58,5 @@ class PaperSheet extends GetView<QuestionsController> {
         ),
       ),
     );
-  }
-
-  /// returns value in radians
-  double nextRotationZ() {
-    return _random.nextDouble() / 10 * ((_random.nextBool()) ? 1 : -1);
-  }
-
-  Tuple2 nextRandomColorSet() {
-    return _colors[_random.nextInt(_colors.length)];
   }
 }
