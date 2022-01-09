@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:skitour_planning/general/logger.dart';
 import 'package:skitour_planning/oneoften/presentation/questions_controller.dart';
+import 'package:skitour_planning/oneoften/ui/PaperSheetParams.dart';
 import 'package:skitour_planning/oneoften/ui/paper_sheet.dart';
 
 class Phase3Screen extends StatelessWidget {
   static const ROUTE = '/oneoften/phase3';
 
   final QuestionsController controller = Get.put(QuestionsController());
+  final params = PaperSheetParams();
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +31,7 @@ class Phase3Screen extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.bottomCenter,
                       child: Obx(() {
-                        return Text(
-                            'Question number: ${controller.getQuestionNumber}');
+                        return Text('Question number: ${controller.getQuestionNumber}');
                       }),
                     ),
                   );
@@ -51,8 +52,7 @@ class Phase3Screen extends StatelessWidget {
                 child: Obx(
                   () {
                     return Stack(
-                      children: _getDraggablePaperSheets(
-                          controller.getQuestionsStackSize),
+                      children: _getDraggablePaperSheets(controller.getQuestionsStackSize),
                     );
                   },
                 ),
@@ -71,10 +71,11 @@ class Phase3Screen extends StatelessWidget {
     for (i = 1; i < currentQuestionsStackSize; i++) {
       sheets.add(
         Draggable(
-            maxSimultaneousDrags: 1,
-            data: i,
-            child: PaperSheet(questionNumber: i),
-            feedback: PaperSheet(questionNumber: i)),
+          maxSimultaneousDrags: 1,
+          data: i,
+          child: PaperSheet(questionNumber: i, params: params),
+          feedback: PaperSheet(questionNumber: i, params: params),
+        ),
       );
     }
     return sheets;

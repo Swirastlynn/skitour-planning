@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:skitour_planning/oneoften/presentation/questions_controller.dart';
+import 'package:skitour_planning/oneoften/ui/PaperSheetParams.dart';
 import 'package:skitour_planning/oneoften/ui/paper_sheet.dart';
 
 class Phase2Screen extends StatefulWidget {
@@ -13,6 +14,7 @@ class Phase2Screen extends StatefulWidget {
 
 class _Phase2ScreenState extends State<Phase2Screen> {
   final QuestionsController controller = Get.put(QuestionsController());
+  final params = PaperSheetParams();
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +26,11 @@ class _Phase2ScreenState extends State<Phase2Screen> {
           child: Stack(
             children: [
               // todo questionNumber should depend on a list of questions from controller
-              PaperSheet(questionNumber: 1),
-              PaperSheet(questionNumber: 2),
-              PaperSheet(questionNumber: 3),
-              PaperSheet(questionNumber: 4),
-              PaperSheet(questionNumber: 5),
+              PaperSheet(questionNumber: 1, params: params),
+              PaperSheet(questionNumber: 2, params: params),
+              PaperSheet(questionNumber: 3, params: params),
+              PaperSheet(questionNumber: 4, params: params),
+              PaperSheet(questionNumber: 5, params: params),
             ],
           ),
         ),
