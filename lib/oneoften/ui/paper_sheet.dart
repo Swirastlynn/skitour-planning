@@ -18,43 +18,45 @@ class PaperSheet extends GetView<QuestionsController> {
       transform: Matrix4.rotationZ(controller.assignedRotationZ(questionNumber)),
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(8.0)),
-        child: Container(
-          width: 250,
-          height: 420,
-          color: controller.assignedBackgroundColor(questionNumber),
-          child: Column(children: [
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.all(12.0),
-                alignment: Alignment.center,
-                child: Obx(
-                  () {
-                    return Text(
-                      'Question: ${controller.currentQuestionText}',
-                      style: TextStyle(
-                        color: controller.assignedTextColor(questionNumber),
-                      ),
-                    );
-                  },
+        child: Material(
+          child: Container(
+            width: 250,
+            height: 420,
+            color: controller.assignedBackgroundColor(questionNumber),
+            child: Column(children: [
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(12.0),
+                  alignment: Alignment.center,
+                  child: Obx(
+                    () {
+                      return Text(
+                        'Question: ${controller.currentQuestionText}',
+                        style: TextStyle(
+                          color: controller.assignedTextColor(questionNumber),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.all(12.0),
-                child: Obx(() {
-                  return Center(
-                    child: Text(
-                      'Answer: ${controller.currentQuestionAnswer}',
-                      style: TextStyle(
-                        color: controller.assignedTextColor(questionNumber),
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Obx(() {
+                    return Center(
+                      child: Text(
+                        'Answer: ${controller.currentQuestionAnswer}',
+                        style: TextStyle(
+                          color: controller.assignedTextColor(questionNumber),
+                        ),
                       ),
-                    ),
-                  );
-                }),
+                    );
+                  }),
+                ),
               ),
-            ),
-          ]),
+            ]),
+          ),
         ),
       ),
     );
