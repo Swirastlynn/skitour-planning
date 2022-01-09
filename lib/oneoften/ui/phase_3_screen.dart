@@ -30,9 +30,7 @@ class Phase3Screen extends StatelessWidget {
                     width: double.infinity,
                     child: Align(
                       alignment: Alignment.bottomCenter,
-                      child: Obx(() {
-                        return Text('Question number: ${controller.getQuestionNumber}');
-                      }),
+                      child: Text('Question number: ${controller.getQuestionNumber}'),
                     ),
                   );
                 },

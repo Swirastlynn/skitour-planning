@@ -34,16 +34,12 @@ class PaperSheet extends GetView<QuestionsController> {
                 child: Container(
                   padding: const EdgeInsets.all(32.0),
                   alignment: Alignment.topCenter,
-                  child: Obx(
-                    () {
-                      return Text(
-                        'Question ${controller.getQuestionNumber}: ${controller.getQuestionText}',
-                        style: TextStyle(
-                          color: params.assignedTextColor(questionNumber),
-                          fontSize: 16,
-                        ),
-                      );
-                    },
+                  child: Text(
+                    'Answer: ${controller.getQuestionText}',
+                    style: TextStyle(
+                      color: params.assignedTextColor(questionNumber),
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
@@ -51,15 +47,13 @@ class PaperSheet extends GetView<QuestionsController> {
                 child: Container(
                   padding: const EdgeInsets.all(32.0),
                   alignment: Alignment.topCenter,
-                  child: Obx(() {
-                    return Text(
-                      'Answer: ${controller.getQuestionAnswer}',
-                      style: TextStyle(
-                        color: params.assignedTextColor(questionNumber),
-                        fontSize: 16,
-                      ),
-                    );
-                  }),
+                  child: Text(
+                    'Answer: ${controller.getQuestionAnswer}',
+                    style: TextStyle(
+                      color: params.assignedTextColor(questionNumber),
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
               ),
             ]),
