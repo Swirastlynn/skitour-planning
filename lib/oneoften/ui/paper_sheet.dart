@@ -26,11 +26,16 @@ class PaperSheet extends GetView<QuestionsController> {
   @override
   Widget build(BuildContext context) {
     _params = [
-      Tuple3<Color, Color, double>(ThemeColors.burntSienna, Colors.white, _nextRotationZ()),
-      Tuple3<Color, Color, double>(ThemeColors.charcoal, Colors.white, _nextRotationZ()),
-      Tuple3<Color, Color, double>(ThemeColors.orangeYellowCrayola, Colors.black, _nextRotationZ()),
-      Tuple3<Color, Color, double>(ThemeColors.persianGreen, Colors.black, _nextRotationZ()),
-      Tuple3<Color, Color, double>(ThemeColors.sandyBrown, Colors.white, _nextRotationZ()),
+      Tuple3<Color, Color, double>(
+          ThemeColors.burntSienna, Colors.white, _nextRotationZ()),
+      Tuple3<Color, Color, double>(
+          ThemeColors.charcoal, Colors.white, _nextRotationZ()),
+      Tuple3<Color, Color, double>(
+          ThemeColors.orangeYellowCrayola, Colors.black, _nextRotationZ()),
+      Tuple3<Color, Color, double>(
+          ThemeColors.persianGreen, Colors.black, _nextRotationZ()),
+      Tuple3<Color, Color, double>(
+          ThemeColors.sandyBrown, Colors.white, _nextRotationZ()),
     ];
 
     return Container(

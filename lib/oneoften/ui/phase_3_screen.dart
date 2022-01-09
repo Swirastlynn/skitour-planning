@@ -29,7 +29,8 @@ class Phase3Screen extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.bottomCenter,
                       child: Obx(() {
-                        return Text('Question number: ${controller.getQuestionNumber}');
+                        return Text(
+                            'Question number: ${controller.getQuestionNumber}');
                       }),
                     ),
                   );
@@ -50,7 +51,8 @@ class Phase3Screen extends StatelessWidget {
                 child: Obx(
                   () {
                     return Stack(
-                      children: _getDraggablePaperSheets(controller.getQuestionsStackSize),
+                      children: _getDraggablePaperSheets(
+                          controller.getQuestionsStackSize),
                     );
                   },
                 ),
@@ -69,11 +71,10 @@ class Phase3Screen extends StatelessWidget {
     for (i = 1; i < currentQuestionsStackSize; i++) {
       sheets.add(
         Draggable(
-          maxSimultaneousDrags: 1,
-          data: i,
-          child: PaperSheet(questionNumber: i),
-          feedback: PaperSheet(questionNumber: i)
-        ),
+            maxSimultaneousDrags: 1,
+            data: i,
+            child: PaperSheet(questionNumber: i),
+            feedback: PaperSheet(questionNumber: i)),
       );
     }
     return sheets;

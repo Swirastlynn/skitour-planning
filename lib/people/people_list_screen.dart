@@ -27,10 +27,12 @@ class _PeopleListScreenState extends State<PeopleListScreen> {
 
   Future<void> loadPosts() async {
     try {
-      var postsJsonResponse =
-          await apiManager.getAPICall('https://jsonplaceholder.typicode.com/posts');
+      var postsJsonResponse = await apiManager
+          .getAPICall('https://jsonplaceholder.typicode.com/posts');
       setState(() {
-        posts = postsJsonResponse.map<Post>((site) => Post.fromJson(site)).toList() as List<Post>;
+        posts = postsJsonResponse
+            .map<Post>((site) => Post.fromJson(site))
+            .toList() as List<Post>;
       });
     } on NetworkException {
       // todo UI change

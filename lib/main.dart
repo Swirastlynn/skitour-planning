@@ -33,7 +33,9 @@ class TatraSkitourApp extends StatelessWidget {
         GetPage(name: ROOT_ROUTE, page: () => ExamplesScreen()),
         GetPage(name: PeopleListScreen.ROUTE, page: () => PeopleListScreen()),
         GetPage(
-            name: DetailsScreen.ROUTE, page: () => DetailsScreen(), transition: Transition.zoom),
+            name: DetailsScreen.ROUTE,
+            page: () => DetailsScreen(),
+            transition: Transition.zoom),
         GetPage(
             name: PiechartHomeScreen.ROUTE,
             page: () => ChangeNotifierProvider(
@@ -41,7 +43,10 @@ class TatraSkitourApp extends StatelessWidget {
                   child: PiechartHomeScreen(),
                 ),
             transition: Transition.zoom),
-        GetPage(name: OneOfTenScreen.ROUTE, page: () => OneOfTenScreen(), transition: Transition.fadeIn),
+        GetPage(
+            name: OneOfTenScreen.ROUTE,
+            page: () => OneOfTenScreen(),
+            transition: Transition.fadeIn),
         GetPage(name: Phase1Screen.ROUTE, page: () => Phase1Screen()),
         GetPage(name: Phase2Screen.ROUTE, page: () => Phase2Screen()),
         GetPage(name: Phase3Screen.ROUTE, page: () => Phase3Screen()),

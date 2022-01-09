@@ -24,7 +24,8 @@ class DioApiManager {
       Response response = await _dio.get(url);
       return response.data;
     } on DioError catch (dioError) {
-      var exception = NetworkExceptionsManager().transformToNetworkException(dioError);
+      var exception =
+          NetworkExceptionsManager().transformToNetworkException(dioError);
       String errorMessage = exception.message;
       logger.e('Exception $errorMessage');
       // todo here should be non-fatal Crashlytics remote logging
