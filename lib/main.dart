@@ -13,8 +13,14 @@ import 'examples/examples_screen.dart';
 import 'oneoften/ui/phase_1_screen.dart';
 import 'oneoften/ui/phase_2_screen.dart';
 import 'oneoften/ui/phase_3_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(TatraSkitourApp());
 }
 
