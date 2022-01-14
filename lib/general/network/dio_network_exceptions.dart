@@ -69,7 +69,8 @@ abstract class NetworkException implements Exception {
 class ConnectionTimeoutException implements NetworkException {
   ConnectionTimeoutException._internal();
 
-  factory ConnectionTimeoutException() => ConnectionTimeoutException._internal();
+  factory ConnectionTimeoutException() =>
+      ConnectionTimeoutException._internal();
 
   @override
   String get message => "Connection timeout";

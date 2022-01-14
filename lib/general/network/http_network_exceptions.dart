@@ -24,7 +24,8 @@ class ServerException implements Exception {
   const ServerException(this.statusCode);
 
   @override
-  String toString() => 'Error occured while Communication with Server with StatusCode: $statusCode';
+  String toString() =>
+      'Error occured while Communication with Server with StatusCode: $statusCode';
 }
 
 class NoInternetConnectionException implements Exception {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:skitour_planning/general/network/dio_api_manager.dart';
 import 'package:skitour_planning/general/network/dio_network_exceptions.dart';
 import 'package:skitour_planning/people/model/post.dart';
@@ -26,10 +27,12 @@ class _PeopleListScreenState extends State<PeopleListScreen> {
 
   Future<void> loadPosts() async {
     try {
-      var postsJsonResponse =
-          await apiManager.getAPICall('https://jsonplaceholder.typicode.com/posts');
+      var postsJsonResponse = await apiManager
+          .getAPICall('https://jsonplaceholder.typicode.com/posts');
       setState(() {
-        posts = postsJsonResponse.map<Post>((site) => Post.fromJson(site)).toList() as List<Post>;
+        posts = postsJsonResponse
+            .map<Post>((site) => Post.fromJson(site))
+            .toList() as List<Post>;
       });
     } on NetworkException {
       // todo UI change
@@ -56,10 +59,7 @@ class _PeopleListScreenState extends State<PeopleListScreen> {
   Widget getRow(int i) {
     return MaterialButton(
       onPressed: () {
-        Navigator.pushNamed(
-          context,
-          DetailsScreen.ROUTE,
-        );
+        Get.toNamed(DetailsScreen.ROUTE);
       },
       child: Padding(
         padding: EdgeInsets.all(12.0),
